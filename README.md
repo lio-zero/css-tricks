@@ -3,17 +3,16 @@
 本仓库的 CSS 技巧是从我另一个仓库 [blog](https://github.com/lio-zero/blog) 的[常用的一些 CSS 技巧一](https://github.com/lio-zero/blog/blob/master/CSS/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%20CSS%20%E6%8A%80%E5%B7%A7%E4%B8%80.md)和[常用的一些 CSS 技巧二 — 选择器（伪类与伪元素）](https://github.com/lio-zero/blog/blob/master/CSS/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%20CSS%20%E6%8A%80%E5%B7%A7%E4%BA%8C%20%E2%80%94%20%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%EF%BC%89.md)整理过来的，目的是为了方便后续的阅读和添加新内容。
 
 - [CSS3 中的 counter](#css3-中的-counter)
-- [使用 CSS white-space 修复文本重叠](#使用-css-white-space-修复文本重叠)
+- [使用 CSS `white-space` 修复文本重叠](#使用-css-white-space-修复文本重叠)
 - [Flexbox 居中元素](#flexbox-居中元素)
-- [Gird 居中元素](#gird-居中元素)
 - [在 CSS 中更改光标颜色](#在-css-中更改光标颜色)
 - [使非密码输入使用符号替代](#使非密码输入使用符号替代)
-- [CSS user-select 禁用文本选择](#css-user-select-禁用文本选择)
+- [禁用文本选择](#禁用文本选择)
 - [自定义 CSS 选择样式](#自定义-css-选择样式)
 - [CSS 变量](#css-变量)
   - [全局范围内定义](#全局范围内定义)
   - [局部范围内定义](#局部范围内定义)
-- [text-rendering](#text-rendering)
+- [CSS `text-rendering` 属性](#css-text-rendering-属性)
 - [类似原生的 IOS 滚动](#类似原生的-ios-滚动)
 - [蚀刻文字](#蚀刻文字)
 - [实现文本溢出省略效果](#实现文本溢出省略效果)
@@ -25,7 +24,7 @@
 - [发光的蓝色输入亮点](#发光的蓝色输入亮点)
 - [使用 fieldset 禁用表单](#使用-fieldset-禁用表单)
 - [非表单 fieldset 外观](#非表单-fieldset-外观)
-- [将 WebKit 的文件上传输入按钮强制向右移动](#将-webkit-的文件上传输入按钮强制向右移动)
+- [将 WebKit 的文件上传按钮强制向右移动](#将-webkit-的文件上传按钮强制向右移动)
 - [简单而漂亮的 Blockquote 样式](#简单而漂亮的-blockquote-样式)
 - [使用纯 CSS 创建三角形](#使用纯-css-创建三角形)
 - [制作一个列宽相等的表格](#制作一个列宽相等的表格)
@@ -48,22 +47,21 @@
 - [创建自定义表情符号光标](#创建自定义表情符号光标)
 - [CSS 重置盒模型](#css-重置盒模型)
 - [清除浮动](#清除浮动)
-- [:focus 状态样式](#focus-状态样式)
-- [:focus-within](#focus-within)
+- [`:focus` 状态样式](#focus-状态样式)
+- [`:focus-within` 伪类](#focus-within-伪类)
 - [实现分割线](#实现分割线)
 - [为破损的图片定义样式](#为破损的图片定义样式)
 - [CSS `:empty`](#css-empty)
   - [显示空列表的占位符](#显示空列表的占位符)
   - [设置空链接的内容](#设置空链接的内容)
-- [CSS :only-child](#css-only-child)
-- [CSS :not()](#css-not)
-- [逗号分隔列表](#逗号分隔列表)
-- [移除最后一个导航项的边框](#移除最后一个导航项的边框)
-- [隐藏没有静音、自动播放的影片](#隐藏没有静音自动播放的影片)
+- [CSS `:only-child` 伪类](#css-only-child-伪类)
+- [CSS `:not()` 伪类](#css-not-伪类)
+  - [逗号分隔列表](#逗号分隔列表)
+  - [移除最后一个导航项的边框](#移除最后一个导航项的边框)
+  - [隐藏没有静音、自动播放的影片](#隐藏没有静音自动播放的影片)
 - [单独的项目列表](#单独的项目列表)
-- [CSS 设置 ::placeholder 文本的样式](#css-设置-placeholder-文本的样式)
-- [CSS :placeholder-shown](#css-placeholder-shown)
-- [自定义列表](#自定义列表)
+- [CSS 设置 `::placeholder` 文本的样式](#css-设置-placeholder-文本的样式)
+- [CSS `:placeholder-shown` 伪类](#css-placeholder-shown-伪类)
 - [自定义文字选择](#自定义文字选择)
 - [自定义 WebKit 滚动条](#自定义-webkit-滚动条)
 - [首字大写](#首字大写)
@@ -71,21 +69,23 @@
 - [使用 `:nth-child()` 创建具有交替背景颜色的列表](#使用-nth-child-创建具有交替背景颜色的列表)
 - [使用负 `:nth-child` 和 `:nth-last-child` 来选择元素](#使用负-nth-child-和-nth-last-child-来选择元素)
 - [:hover](#hover)
-- [::marker](#marker)
-- [使用 :invalid 和 :valid 校验表单元素](#使用-invalid-和-valid-校验表单元素)
-- [使用 :checked 和 `:default` 赋予元素状态](#使用-checked-和-default-赋予元素状态)
+- [CSS `::marker` 伪元素](#css-marker-伪元素)
+  - [自定义列表](#自定义列表)
+- [使用 `:invalid` 和 `:valid` 校验表单元素](#使用-invalid-和-valid-校验表单元素)
+- [使用 `:checked` 和 `:default` 赋予元素状态](#使用-checked-和-default-赋予元素状态)
 - [将前导零附加到有序列表项](#将前导零附加到有序列表项)
 - [使用特殊字符设置列表项的样式](#使用特殊字符设置列表项的样式)
 - [使用 “形似猫头鹰” 选择器](#使用-形似猫头鹰-选择器)
-- [将样式与 :is 伪类选择器组合](#将样式与-is-伪类选择器组合)
-- [使用 :root 选择器灵活控制字体大小](#使用-root-选择器灵活控制字体大小)
+- [将样式与 `:is` 伪类选择器组合](#将样式与-is-伪类选择器组合)
+- [使用 `:root` 选择器灵活控制字体大小](#使用-root-选择器灵活控制字体大小)
 - [利用属性选择器来选择空链接](#利用属性选择器来选择空链接)
 - [利用 `+` 隐藏额外的换行符](#利用--隐藏额外的换行符)
 - [在行内元素之间添加换行符](#在行内元素之间添加换行符)
+- [CSS 滚动阴影](#css-滚动阴影)
 
 ## CSS3 中的 counter
 
-使用 `counter` 属性可将任何元素转换为编号列表。类似于有序列表标签的工作方式 `<ol>`
+使用 `counter` 属性可将任何元素转换为编号列表，它类似于有序列表 `<ol>` 标签的工作方式。
 
 - 定义并初始化计数器 `counter-reset: tidbit-counter 19;`
 - 增量计数器 `counter-increment: <counter name> <integer>`
@@ -117,9 +117,9 @@ h2::before {
 
 ![counter](https://upload-images.jianshu.io/upload_images/18281896-814fd949fa889d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 使用 CSS white-space 修复文本重叠
+## 使用 CSS `white-space` 修复文本重叠
 
-有时 `nowrap` 会导致文本重叠
+有时 `nowrap` 会导致文本重叠：
 
 ```css
 .container {
@@ -133,7 +133,7 @@ div {
 
 ![nowrap](https://upload-images.jianshu.io/upload_images/18281896-00a64d79204be949.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-我们设置了 `nowrap` 并没有发送重叠的问题，但当我们给其添加 width 的时候，看看会发生什么情况
+我们设置了 `nowrap` 并没有发生重叠的问题，但当我们爲为其添加 `width` 的时候，看看会发生什么情况：
 
 ```css
 div {
@@ -145,7 +145,7 @@ div {
 
 发生这种情况是因为原本的 `div` 宽度的默认值为 `width: auto`，这意味着盒子会根据其内容展开。但是，当我们给其一个固定的宽度时，会限制它的增长。文本无处可去，流进了同级框中。
 
-我们可以通过将设置 `white-space` 为 `normal` 轻松修复它
+我们可以通过将设置 `white-space` 为 `normal` 轻松修复它：
 
 ```css
 div {
@@ -185,35 +185,11 @@ div {
 
 ![flex 水平垂直居中](https://upload-images.jianshu.io/upload_images/18281896-6c6a463d57bcd501.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## Gird 居中元素
-
-```css
-.parent {
-  display: grid;
-}
-
-.child {
-  /* place-items: center center; */
-  justify-self: center;
-  align-self: center;
-}
-```
-
-`grid` 和 `margin`
-
-```css
-.parent {
-  display: grid;
-}
-
-.child {
-  margin: auto;
-}
-```
+> 推荐：[CSS 居中](https://github.com/lio-zero/blog/blob/main/CSS%20Layout/CSS%20%E5%B1%85%E4%B8%AD.md)
 
 ## 在 CSS 中更改光标颜色
 
-使用 `caret-color` 更改光标（尖号）的颜色：
+使用 `caret-color` 更改光标的颜色：
 
 ```css
 input {
@@ -227,17 +203,17 @@ input {
 }
 ```
 
-![caret-color](https://upload-images.jianshu.io/upload_images/18281896-1d6c682dd8baf4bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![caret-color 更改光标颜色](https://upload-images.jianshu.io/upload_images/18281896-1d6c682dd8baf4bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 使非密码输入使用符号替代
 
 这适用于文本输入（例如 `text`、`textarea` 等），但不能更改实际的密码输入。
 
-`password` 默认样式
+`password` 默认样式：
 
 ```css
 input {
-  -webkit-text-security: disc; /* default */ }
+  -webkit-text-security: disc; /* default */
 }
 ```
 
@@ -247,9 +223,11 @@ input {
 input {
   -webkit-text-security: none;
 }
+
 input {
   -webkit-text-security: circle;
 }
+
 input {
   -webkit-text-security: square;
 }
@@ -259,7 +237,9 @@ input {
 
 ![square](https://upload-images.jianshu.io/upload_images/18281896-f4c1672a26c46aae.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## CSS user-select 禁用文本选择
+> **注意**：[`-webkit-text-security`](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-security) 不在标准中。
+
+## 禁用文本选择
 
 - 使用 `user-select: none` 使元素的内容不可选。
 - 使用 `user-select: all` 用户只需点击一次选择文本
@@ -335,9 +315,9 @@ p::-moz-selection {
 }
 ```
 
-## text-rendering
+## CSS `text-rendering` 属性
 
-CSS 关于文本渲染的 [`text-rendering`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering) 属性告诉渲染引擎工作时如何优化显示文本。 浏览器会在渲染速度、易读性（清晰度）和几何精度方面做一个权衡。
+CSS 关于文本渲染的 [`text-rendering`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering) 属性告诉渲染引擎工作时如何优化显示文本。浏览器会在渲染速度、易读性（清晰度）和几何精度方面做一个权衡。
 
 语法：
 
@@ -361,7 +341,7 @@ body {
 - `-webkit-overflow-scrolling: touch` 当手指从触摸屏上移开，会保持一段时间的滚动
 - `-webkit-overflow-scrolling: auto` 当手指从触摸屏上移开，滚动会立即停止
 
-这些属性只能在 Safari iOS 中使用
+这些属性只能在 Safari iOS 中使用：
 
 ```css
 body {
@@ -369,6 +349,8 @@ body {
   overflow-y: auto;
 }
 ```
+
+相关资料：
 
 - [Scroll Bouncing On Your Websites](https://www.smashingmagazine.com/2018/08/scroll-bouncing-websites/)
 - [Momentum Scrolling on iOS Overflow Elements](https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements/)
@@ -445,9 +427,11 @@ body {
 
 ![溢出省略](https://upload-images.jianshu.io/upload_images/18281896-0d99d4c3a992f4c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+> 推荐：[CSS 实现文本溢出省略效果](https://github.com/lio-zero/blog/blob/main/CSS/CSS%20%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E7%9C%81%E7%95%A5%E6%95%88%E6%9E%9C.md)
+
 ## 渐变文字
 
-- `background` 与 `linear-gradient` 值一起使用可为文本元素提供渐变背景。
+- `background` 与 `linear-gradient` 一起使用可为文本元素提供渐变背景。
 - `webkit-text-fill-color: transparent` 用于透明颜色填充文本。
 - `webkit-background-clip: text` 用于用文本剪切背景，用渐变背景作为颜色填充文本。
 
@@ -461,11 +445,13 @@ body {
 
 ![渐变文字](https://upload-images.jianshu.io/upload_images/18281896-a218fe9a96cddceb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+[示例地址：包含了很多网站所使用的渐变文字](https://codepen.io/lio-zero/pen/RwMpJgy)
+
 ## 文本描边效果
 
-- `-webkit-text-stroke` 为文本字符指定了文本宽 `width` 和文本颜色 `color`
-- `text-stroke-width`：设置或检索对象中的文字的描边厚度
-- `text-stroke-color`：设置或检索对象中的文字的描边颜色
+- `-webkit-text-stroke` 为文本字符指定了文本宽读 `width` 和文本颜色 `color`
+- `text-stroke-width` 设置或检索对象中的文字的描边厚度
+- `text-stroke-color` 设置或检索对象中的文字的描边颜色
 
 ```css
 .text {
@@ -477,7 +463,10 @@ body {
 
 ![文本描边效果](https://upload-images.jianshu.io/upload_images/18281896-a41354ed2b62674a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-[介绍文本笔画](https://www.webkit.org/blog/85/introducing-text-stroke/)
+相关资料：
+
+- [-webkit-text-stroke](https://developer.mozilla.org/zh-CN/docs/Web/CSS/-webkit-text-stroke)
+- [Introducing Text-Stroke](https://www.webkit.org/blog/85/introducing-text-stroke/)
 
 ## 系统字体堆栈
 
@@ -485,7 +474,7 @@ body {
 
 - 使用 `font-family` 定义字体列表。
 - 浏览器会查找每个连续的字体，如果可能的话，会选择第一个字体，如果找不到字体（在系统上或 CSS 中定义），则会退回到下一个字体。
-- `-apple-system` 是 San Francisco,，在 iOS 和 macOS（而不是 Chrome）上使用。
+- `-apple-system` 是 San Francisco，在 iOS 和 macOS（而不是 Chrome）上使用。
 - `BlinkMacSystemFont` 是 San Francisco，在 macOS Chrome 上使用。
 - `'Segoe UI'` 在 Windows 10 上使用。
 - `Roboto` 在 Android 上使用。
@@ -503,6 +492,13 @@ body {
     sans-serif;
 }
 ```
+
+相关资料：
+
+- [Chrome + System Fonts Snafu](https://css-tricks.com/chrome-system-fonts-snafu/)
+- [OS Specific Fonts in CSS](https://css-tricks.com/os-specific-fonts-css/)
+- [System Font Stack](https://css-tricks.com/snippets/)
+- [System Fonts in CSS](https://furbo.org/2018/03/28/system-fonts-in-css/)
 
 ## 叠纸效果
 
@@ -636,7 +632,7 @@ CSS 如下：
 
 ![fieldset](https://upload-images.jianshu.io/upload_images/18281896-b6f7ecd73b6b096d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 将 WebKit 的文件上传输入按钮强制向右移动
+## 将 WebKit 的文件上传按钮强制向右移动
 
 ```css
 input[type='file'] {
@@ -748,8 +744,8 @@ table {
 
 仅使用一个属性将所有样式重置为默认值。
 
-- 使用该`all`属性将所有样式（继承或不继承）重置为其默认值。
-- **注意**：这不会影响 `direction`和`unicode-bidi`属性。
+- 使用 `all` 属性将所有样式（继承或不继承）重置为其默认值。
+- **注意**，这不会影响 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 和 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 属性。
 
 ```css
 .reset-all-styles {
@@ -800,7 +796,7 @@ hr {
 
 ## 从图像中剔除白色背景
 
-使用 `mix-blend-mode: multiply;`，从图像中剔除白色背景：
+使用 [`mix-blend-mode: multiply`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/mix-blend-mode)，从图像中剔除白色背景：
 
 ```css
 img {
@@ -955,7 +951,7 @@ aside .module {
 
 ## 为 body 元素添加行高
 
-不必为每一个 `<p>`，`<h*>` 元素逐一添加 `line-height`，直接添加到 `body` 元素：
+不必为每一个 `<p>`、`<h*>` 等元素逐一添加 `line-height`，利用 CSS 继承性，直接在 `body` 元素上添加统一的初始行高：
 
 ```css
 body {
@@ -964,6 +960,8 @@ body {
 ```
 
 文本元素可以很容易地继承 `body` 的样式。
+
+> 推荐：[CSS 继承、级联和特异性](https://github.com/lio-zero/blog/blob/main/CSS/CSS%20%E7%BB%A7%E6%89%BF%E3%80%81%E7%BA%A7%E8%81%94%E5%92%8C%E7%89%B9%E5%BC%82%E6%80%A7.md)
 
 ## 转义 CSS 类名
 
@@ -999,7 +997,7 @@ CSS 类名不能包含 `:` 字符。例如，不可能在 CSS 中声明以下类
 }
 ```
 
-SVG 在所有分辨率下都可以良好缩放，并且支持所有 [IE9](https://caniuse.com/#search=svg) 以后的浏览器，现在使用它替换您的 .png，.jpg，或 .gif 文件吧。
+SVG 在所有分辨率下都可以良好缩放，并且支持所有 [IE9](https://caniuse.com/#search=svg) 以后的浏览器，现在使用它替换您的 `.png`、`.jpg` 或 `.gif` 文件。
 
 > **注意**： 针对仅有图标的按钮，如果 SVG 没有加载成功的话，以下样式对无障碍有所帮助：
 
@@ -1141,12 +1139,13 @@ article * + h2 {
 
 > **注意**：仅在用于 `float` 构建布局时，此选项才有用。考虑使用更现代的方法，例如 `flexbox` 或 `grid` 布局
 
-## :focus 状态样式
+## `:focus` 状态样式
 
 ```css
 .input {
   transition: 180ms box-shadow ease-in-out;
 }
+
 .input:focus {
   box-shadow: 0 0 0 3px hsla(245, 100%, calc(82%), 0.8);
   border-color: hsl(245, 100%, 42%);
@@ -1154,61 +1153,35 @@ article * + h2 {
 }
 ```
 
-![:focus](https://upload-images.jianshu.io/upload_images/18281896-3857ab24f2a8c899.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![:focus 状态样式](https://upload-images.jianshu.io/upload_images/18281896-3857ab24f2a8c899.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## :focus-within
+## `:focus-within` 伪类
 
-创建带有视觉，不可编辑前缀的输入。
+当 `:focus-within` 元素本身具有焦点或其任何后代具有焦点时，伪类将变为活动状态。
 
-- 当用户与 `<input>` 字段交互时，使用 `:focus-within` 伪类选择器为父元素设置样式。
+以下是一个不可编辑前缀的输入框示例。
 
-```html
-<div class="input-box">
-  <span class="prefix">+08</span>
-  <input type="tel" placeholder="888 8888" />
-</div>
-```
-
-css 如下
+当用户与 `<input>` 交互时，使用 `:focus-within` 伪类选择器为父元素设置样式。
 
 ```css
-.input-box {
-  display: flex;
-  align-items: center;
-  max-width: 300px;
-  background: #fff;
-  border: 1px solid #a0a0a0;
-  border-radius: 4px;
-  padding-left: 0.5rem;
-  overflow: hidden;
-  font-family: sans-serif;
-}
-
-.input-box .prefix {
-  font-weight: 300;
-  font-size: 14px;
-  color: #999;
-}
-
-.input-box input {
-  flex-grow: 1;
-  font-size: 14px;
-  background: #fff;
-  border: none;
-  outline: none;
-  padding: 0.5rem;
-}
-
 .input-box:focus-within {
   border-color: plum;
 }
 ```
 
-![:focus-within](https://upload-images.jianshu.io/upload_images/18281896-e56eebdb2db5ca70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+未聚焦状态：
+
+![输入框](https://upload-images.jianshu.io/upload_images/18281896-5a33c7a11d82a706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+聚焦状态：
+
+![:focus-within 聚焦状态](https://upload-images.jianshu.io/upload_images/18281896-b3ed2a1c5235803d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[演示地址](https://codepen.io/lio-zero/pen/yLKpqoR)
 
 ## 实现分割线
 
-实现分割线的方式有很多种，这里我们使用 `flex` 加伪元素（`::before` 和 `::after`）实现
+实现分割线的方式有很多种，这里我们使用 `flex` 配合伪元素（`::before` 和 `::after`）实现：
 
 ```css
 .divider {
@@ -1359,7 +1332,7 @@ a[href^='http']:empty:before {
 }
 ```
 
-## CSS :only-child
+## CSS `:only-child` 伪类
 
 如果要设置没有兄弟元素的样式，请使用 `:only-child` 伪类选择器
 
@@ -1380,7 +1353,7 @@ li:only-child {
 }
 ```
 
-## CSS :not()
+## CSS `:not()` 伪类
 
 不要使用两个不同的选择器来指定样式，然后使用另一个来否定使用它。`:not` 选择器可选择除与所传递参数匹配的元素之外的所有元素
 
@@ -1400,7 +1373,7 @@ li:not(:first-of-type) {
 }
 ```
 
-## 逗号分隔列表
+### 逗号分隔列表
 
 使列表的每项都由逗号分隔：
 
@@ -1414,7 +1387,7 @@ ul > li:not(:last-child)::after {
 
 > **注意**： 这一技巧对于无障碍，特别是屏幕阅读器而言并不理想。而且复制粘贴并不会带走 CSS 生成的内容，需要注意。
 
-## 移除最后一个导航项的边框
+### 移除最后一个导航项的边框
 
 我们经常使用 `:last-child` 选择器取消应用最后一项的特定样式（例如 `border`）。创建每个项目都有底部边框的导航通常如下所示：
 
@@ -1446,7 +1419,7 @@ li + li {
 }
 ```
 
-## 隐藏没有静音、自动播放的影片
+### 隐藏没有静音、自动播放的影片
 
 这是一个自定义用户样式表的不错的技巧。避免在加载页面时自动播放。如果没有静音，则不显示视频：
 
@@ -1472,9 +1445,9 @@ li:not(:last-child):after {
 }
 ```
 
-## CSS 设置 ::placeholder 文本的样式
+## CSS 设置 `::placeholder` 文本的样式
 
-使用 `::placeholder` 伪元素在 `<input>` 或 `<textarea>` 元素为占位符文本设置样式 。大多数现代浏览器都支持此功能，但对于较旧的浏览器，将需要供应商前缀。
+使用 `::placeholder` 伪元素在 `<input>` 或 `<textarea>` 元素为占位符文本设置样式。大多数现代浏览器都支持此功能，但对于较旧的浏览器，将需要供应商前缀。
 
 ```html
 <input placeholder="CSS Placeholder" />
@@ -1486,9 +1459,9 @@ li:not(:last-child):after {
 }
 ```
 
-![placeholder ](https://upload-images.jianshu.io/upload_images/18281896-eb0a27ff2f59f166.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![设置 ::placeholder 文本的样式](https://upload-images.jianshu.io/upload_images/18281896-eb0a27ff2f59f166.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## CSS :placeholder-shown
+## CSS `:placeholder-shown` 伪类
 
 使用 `:placeholder-shown` 伪类为当前显示占位符文本的输入设置样式
 
@@ -1525,28 +1498,6 @@ input:placeholder-shown {
 ![:placeholder-shown](https://upload-images.jianshu.io/upload_images/18281896-7705f8d2e9e5bce5.gif?imageMogr2/auto-orient/strip)
 
 [`:placeholder-shown` 实现占位符过渡动画 demo](https://www.zhangxinxu.com/study/201812/placeholder-shown-label-transition-demo.php)
-
-## 自定义列表
-
-主要的几行代码如下：
-
-```css
-ul li::marker {
-  content: attr(data-icon);
-  font-size: 1.25em;
-}
-
-ol li::marker {
-  content: counter(list-item);
-  font-family: 'Indie Flower';
-  font-size: 1.5em;
-  color: purple;
-}
-```
-
-上面例子中，`attr()` 用于抓取标签上的自定义属性 `data-*` 中的值赋予 content。详细例子请看：[CODEPEN](https://codepen.io/5t3ph/pen/KKgqeNB)
-
-![1616732729(1).jpg](https://upload-images.jianshu.io/upload_images/18281896-849c1096ef2a2dcd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 自定义文字选择
 
@@ -1700,12 +1651,13 @@ p:first-child::first-letter {
 li:nth-child(odd) {
   background-color: purple;
 }
+
 li:nth-child(even) {
   background: plum;
 }
 ```
 
-![1616744697(1).jpg](https://upload-images.jianshu.io/upload_images/18281896-a79b0cb4b8a7fcb8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![创建具有交替背景颜色的列表](https://upload-images.jianshu.io/upload_images/18281896-a79b0cb4b8a7fcb8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 使用负 `:nth-child` 和 `:nth-last-child` 来选择元素
 
@@ -1774,20 +1726,58 @@ li {
 
 `:hover` 可以配合动画和其他选择器做出很多效果，找时间在写一些例子，顺便加深印象
 
-## ::marker
+## CSS `::marker` 伪元素
 
 `::marker` 伪元素代表一个列表项的标记框 `<li>`。标记通常是一个项目符号或数字。
 
 ```css
 ul li::marker {
-  color: red;
+  color: plum;
   font-size: 1.5em;
 }
 ```
 
+效果如下：
+
 ![::marker](https://upload-images.jianshu.io/upload_images/18281896-fec616a19c4707a0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 使用 :invalid 和 :valid 校验表单元素
+[演示地址](https://codepen.io/lio-zero/pen/wvmpXrM)
+
+**相关资料**：
+
+[CSS Lists, Markers, And Counters](https://www.smashingmagazine.com/2019/07/css-lists-markers-counters/)
+
+### 自定义列表
+
+这里的自定义列表也使用到了 `::marker` 伪元素，这里有两种实现。
+
+- 通过 `attr()` 用于获取标签上的自定义属性 `data-*` 中的值，并赋予 `content` 属性
+
+```css
+ul li::marker {
+  content: attr(data-icon);
+  font-size: 1.25em;
+}
+```
+
+- 使用 `counter` 属性将任何元素转换为编号列表，并赋值给 `content`。
+
+```css
+ol li::marker {
+  content: counter(list-item);
+  font-family: 'Indie Flower';
+  font-size: 1.5em;
+  color: purple;
+}
+```
+
+效果如下：
+
+![自定义列表](https://upload-images.jianshu.io/upload_images/18281896-849c1096ef2a2dcd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[演示地址](https://codepen.io/lio-zero/pen/OJvzEqR)
+
+## 使用 `:invalid` 和 `:valid` 校验表单元素
 
 - CSS 伪类 `:invalid` 表示任意内容未通过验证的 `<input>` 或其他 `<form>` 元素。
 - CSS 伪类 `:valid` 表示内容验证正确的 `<input>` 或其他 `<form>` 元素。
@@ -1823,13 +1813,13 @@ form:valid {
 
 当校验错误时：
 
-![1616748752(1).jpg](https://upload-images.jianshu.io/upload_images/18281896-208b947e9179e423.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![校验错误](https://upload-images.jianshu.io/upload_images/18281896-208b947e9179e423.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 当校验成功时：
 
-![1616748801(1).jpg](https://upload-images.jianshu.io/upload_images/18281896-021466bf1b81684c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![校验成功](https://upload-images.jianshu.io/upload_images/18281896-021466bf1b81684c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 使用 :checked 和 `:default` 赋予元素状态
+## 使用 `:checked` 和 `:default` 赋予元素状态
 
 `:checked` 伪类选择器表示任何处于选中状态的 `radio`，`checkbox` 或 `select` 元素中的 `option`。
 
@@ -1940,7 +1930,7 @@ li {
 
 更多 “形似猫头鹰” 的选择器，可参考 _A List Apart_ 上面 [Heydon Pickering 的文章](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls)
 
-## 将样式与 :is 伪类选择器组合
+## 将样式与 `:is` 伪类选择器组合
 
 `:is` 伪类选择器为与参数中列出的选择器匹配的任何元素应用样式。
 
@@ -1962,7 +1952,7 @@ footer a:hover {
 }
 ```
 
-## 使用 :root 选择器灵活控制字体大小
+## 使用 `:root` 选择器灵活控制字体大小
 
 在响应式布局中，字体大小应需要根据不同的视口进行调整。你可以计算字体大小根据视口高度和宽度，这时需要用到 `:root`：
 
@@ -2023,3 +2013,39 @@ br + br {
 ```
 
 其中 `\A` 表示换行符。
+
+<!-- https://flaviocopes.com/tags/css/page/2/ -->
+
+## CSS 滚动阴影
+
+- 使用线性渐变（`linear-gradient`）和径向渐变（`radial-gradient`）设置阴影区域
+- 通过添加 `background-attachment: local` 使背景相对于元素的内容定位。
+
+```css
+.scroll-shadows {
+  background: linear-gradient(white 30%, rgba(255, 255, 255, 0)) center top, linear-gradient(
+        rgba(255, 255, 255, 0),
+        white 70%
+      ) center bottom,
+    radial-gradient(
+        farthest-side at 50% 0,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      ) center top, radial-gradient(
+        farthest-side at 50% 100%,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      ) center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  background-attachment: local, local, scroll, scroll;
+}
+```
+
+> [查看示例](https://codepen.io/lio-zero/pen/abYEKOq)
+
+相关资料：
+
+- [Pure CSS scrolling shadows with background-attachment: local](https://lea.verou.me/2012/04/background-attachment-local/)
+- [Scroll Shadows](https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/)
+- https://css-tricks.com/scroll-shadows-pure-css-parallax-game-back-on/
